@@ -1,6 +1,6 @@
 /**
- * Dinidu Dissanayake - Developer Portfolio JavaScript
- * Modern, Lightweight Vanilla JS for navigation, interactions, and copy feedback
+ * Dinidu Dissanayake - Developer Portfolio JavaScript (Static Edition)
+ * Lightweight Vanilla JS for navigation, interactions, copy feedback, and static contact handling
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initClipboardButtons();
   initBackToTop();
   initSmoothScroll();
+  initContactForm();
 });
 
 /**
@@ -244,5 +245,79 @@ function initSmoothScroll() {
         });
       }
     });
+  });
+}
+
+/**
+ * Static Contact Form Handler
+ * Handles client-side email dispatch via mailto with feedback alert & copy fallback
+ */
+function initContactForm() {
+  const form = document.getElementById('contact-form');
+  const statusContainer = document.getElementById('form-status');
+
+  if (!form || !statusContainer) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = form.querySelector('#contact-name').value.trim();
+    const email = form.querySelector('#contact-email').value.trim();
+    const subject = form.querySelector('#contact-subject').value.trim();
+    const message = form.querySelector('#contact-message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      statusContainer.innerHTML = `
+        <div class="form-feedback-alert alert-error">
+          <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="flex-shrink:0;">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>Please fill out all required fields before sending.</div>
+        </div>
+      `;
+      return;
+    }
+
+    const recipient = 'dissanayakedinidu@gmail.com';
+    const emailSubject = encodeURIComponent(`[Portfolio Inquiry] ${subject}`);
+    const emailBody = encodeURIComponent(`Hi Dinidu,\n\n${message}\n\nFrom: ${name}\nEmail: ${email}`);
+    const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+
+    // Display rich in-page confirmation
+    statusContainer.innerHTML = `
+      <div class="form-feedback-alert alert-success">
+        <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="flex-shrink:0;">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M5 13l4 4L19 7" />
+        </svg>
+        <div>
+          <strong>Ready to Send!</strong>
+          <p style="margin-top:0.35rem; font-size:0.86rem; color:var(--text-light);">
+            Your email client is launching with this message prefilled. If it does not open automatically, click the button below:
+          </p>
+          <div style="margin-top:0.75rem; display:flex; gap:0.5rem; flex-wrap:wrap;">
+            <a href="${mailtoUrl}" class="btn btn-primary btn-sm">Launch Email Client</a>
+            <button type="button" class="btn btn-secondary btn-sm" id="btn-copy-msg">Copy Message Text</button>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Handle copying message text in alert
+    const copyMsgBtn = document.getElementById('btn-copy-msg');
+    if (copyMsgBtn) {
+      copyMsgBtn.addEventListener('click', async () => {
+        const fullText = `To: ${recipient}\nSubject: [Portfolio Inquiry] ${subject}\n\nHi Dinidu,\n\n${message}\n\nFrom: ${name}\nEmail: ${email}`;
+        try {
+          await navigator.clipboard.writeText(fullText);
+          showToast('✓ Message copied to clipboard!');
+        } catch (err) {
+          showToast('Failed to copy');
+        }
+      });
+    }
+
+    // Trigger email client
+    window.location.href = mailtoUrl;
+    showToast('✓ Email client opening...');
   });
 }

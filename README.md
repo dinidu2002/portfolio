@@ -1,137 +1,111 @@
-# Dinidu Dissanayake — Software Developer Portfolio
+# Dinidu Dissanayake — Static Developer Portfolio
 
-A modern, responsive, and recruiter-focused Software Developer Portfolio built with **Laravel 12, Blade Templates, Vanilla CSS, and JavaScript**.
+A fast, lightweight, and responsive static Software Developer Portfolio built using pure **HTML5, CSS3, and Vanilla JavaScript (ES6+)**. Completely free of Laravel, PHP, or database dependencies.
 
-[![Laravel Version](https://img.shields.io/badge/Laravel-12.x-FF2D20?style=flat&logo=laravel&logoColor=white)](https://laravel.com)
-[![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
-[![GitHub](https://img.shields.io/badge/GitHub-dinidu2002-181717?style=flat&logo=github&logoColor=white)](https://github.com/dinidu2002)
+Designed specifically for zero-cost static hosting on **GitHub Pages, Netlify, Vercel, or Cloudflare Pages**, and ready to share directly on **LinkedIn** and resume profiles.
 
 ---
 
-## 🌟 Highlights & Design Features
-
-- **Dark Navy Theme**: Premium dark navy background (`#07111F`) paired with cyan (`#06b6d4`) and sky blue (`#38bdf8`) accents.
-- **Glassmorphism**: Subtle glass cards with backdrop filters and delicate glow effects.
-- **100% Responsive**: Tested across mobile smartphones, tablets, laptops, and ultra-wide desktops.
-- **Fast & Zero Heavy Dependencies**: Crafted with lightweight native CSS and Vanilla JS for instant page load speeds without bulky build steps.
-- **Verified CV Information**: Reflects real qualifications (SLIATE HND in Information Technology), 1-year banking experience at RDB, verified skills, and genuine projects.
-- **Dynamic CV Download**: Working CV download button linking to the official PDF stored in `public/cv/Dinidu_Dissanayake_CV.pdf`.
-- **Honest Contact Channels**: Direct copy buttons for email, phone, and address, paired with a functional Laravel contact route.
-
----
-
-## 🛠️ Tech Stack
-
-- **Backend**: Laravel 12, PHP 8.2+
-- **Templating**: Laravel Blade Components & Partials
-- **Frontend**: HTML5, Modern CSS3 (CSS Variables, Flexbox, Grid), Vanilla JavaScript (ES6+)
-- **Database / Storage**: MySQL / Relational Architecture Ready
-- **Styling**: Custom Dark Navy Design System (`public/css/portfolio.css`)
-
----
-
-## 📂 Project Architecture
+## 📁 Folder Structure
 
 ```
-portfolio/
-├── app/
-│   └── Http/
-│       └── Controllers/
-│           └── PortfolioController.php  <-- Handles profile, projects, skills & contact
-├── public/
-│   ├── css/
-│   │   └── portfolio.css               <-- Dark navy & glass styling
-│   ├── js/
-│   │   └── portfolio.js                <-- ScrollSpy, copy feedback, mobile menu
-│   ├── images/
-│   │   ├── profile.png                 <-- Real photo from CV
-│   │   └── profile.jpg
-│   └── cv/
-│       └── Dinidu_Dissanayake_CV.pdf   <-- Verified CV PDF download
-├── resources/
-│   └── views/
-│       ├── layouts/
-│       │   └── app.blade.php           <-- SEO meta, OpenGraph & master layout
-│       ├── partials/
-│       │   ├── navbar.blade.php
-│       │   ├── hero.blade.php
-│       │   ├── about.blade.php
-│       │   ├── skills.blade.php
-│       │   ├── projects.blade.php
-│       │   ├── experience.blade.php
-│       │   ├── education.blade.php
-│       │   ├── references.blade.php
-│       │   ├── contact.blade.php
-│       │   └── footer.blade.php
-│       └── portfolio.blade.php         <-- Main page linking all partials
-└── routes/
-    └── web.php                         <-- Web routes (home, cv.download, contact.submit)
+portfolio-static/
+├── index.html                   <-- Complete static single-page portfolio
+├── .nojekyll                    <-- Tells GitHub Pages to serve assets without Jekyll
+├── README.md                    <-- Instructions for running and hosting
+├── css/
+│   └── portfolio.css            <-- Dark navy & cyan glassmorphism design system
+├── js/
+│   └── portfolio.js             <-- ScrollSpy, project filters, copy toast, contact mailto
+├── images/
+│   ├── profile.png              <-- Real profile photo from CV
+│   ├── profile.jpg
+│   └── profile.bmp
+└── cv/
+    └── Dinidu_Dissanayake_CV.pdf <-- Verified CV file for 1-click download
 ```
 
 ---
 
-## 🚀 How to Run Locally on Windows
+## 💻 How to Open and Test Locally
 
-### Option 1: Using Laravel Artisan (Recommended)
-1. Open PowerShell or Command Prompt in the project folder:
-   ```powershell
-   cd C:\xampp\htdocs\portfolio
-   ```
-2. Start the local Laravel development server:
-   ```powershell
-   php artisan serve
-   ```
-3. Open your browser and navigate to:
-   ```
-   http://127.0.0.1:8000
-   ```
+### Method 1: Direct File Open (No Server Needed)
+Simply double-click `index.html` in your file explorer, or right-click and choose **Open with Google Chrome** (or Edge / Firefox).
+All stylesheet links, images, project badges, and CV download links are relative (`./`) and work directly via `file:///`.
 
-### Option 2: Using XAMPP Apache
-1. Open the **XAMPP Control Panel** and click **Start** next to **Apache** (and **MySQL** if needed).
-2. Open your browser and navigate to:
-   ```
-   http://localhost/portfolio/public
-   ```
+### Method 2: Local Static Web Server (Python / Node / VS Code Live Server)
+- Using Python:
+  ```powershell
+  cd portfolio-static
+  python -m http.server 8080
+  ```
+  Open `http://localhost:8080` in your browser.
+
+- Using VS Code:
+  Right-click `index.html` and choose **"Open with Live Server"**.
 
 ---
 
-## 📦 How to Push to GitHub
+## 🚀 How to Publish for FREE on GitHub Pages
 
-1. Initialize Git in the project root:
+You can host this portfolio online for **100% free** under your personal GitHub URL (e.g. `https://dinidu2002.github.io/portfolio` or `https://dinidu2002.github.io`).
+
+### Option A: Hosting in a New Dedicated GitHub Repository (Recommended)
+
+1. Go to [github.com/new](https://github.com/new) and create a public repository named `portfolio` (or `dinidu-portfolio`).
+2. Open PowerShell in this `portfolio-static` folder:
+   ```powershell
+   cd C:\xampp\htdocs\portfolio\portfolio-static
+   ```
+3. Initialize git and commit:
    ```powershell
    git init
    git add .
-   git commit -m "Initial commit: Complete Dinidu Dissanayake Developer Portfolio"
-   ```
-2. Create a repository on your GitHub account (`https://github.com/dinidu2002/portfolio`).
-3. Link your remote repository and push:
-   ```powershell
+   git commit -m "feat: initial static developer portfolio"
    git branch -M main
+   ```
+4. Connect to your new repository and push:
+   ```powershell
    git remote add origin https://github.com/dinidu2002/portfolio.git
    git push -u origin main
    ```
+5. Enable GitHub Pages:
+   - On GitHub, go to your repository **Settings** → **Pages** (under "Code and automation").
+   - Under **Build and deployment** > **Source**, select **Deploy from a branch**.
+   - Under **Branch**, choose `main` and `/ (root)`, then click **Save**.
+6. Within 1-2 minutes, your website will be live at:
+   👉 **`https://dinidu2002.github.io/portfolio/`**
+
+### Option B: Hosting as your Primary GitHub Profile Website (`username.github.io`)
+If you name your repository **`dinidu2002.github.io`**, GitHub will automatically host your portfolio at the root URL:
+👉 **`https://dinidu2002.github.io/`**
 
 ---
 
-## 🌐 Free Deployment Options
+## 🔗 How to Add to Your LinkedIn Profile
 
-### 1. Render.com / Railway.app
-- Connect your GitHub repository.
-- Select PHP environment or Docker.
-- Build command: `composer install --no-dev --optimize-autoloader`
-- Start command: `php artisan serve --host=0.0.0.0 --port=$PORT`
-
-### 2. Free Shared Web Hosting (e.g., InfinityFree / 000webhost)
-- Upload the project files to your hosting `public_html` directory.
-- Configure document root to point to the `public/` directory.
-- Ensure `.env` is configured with `APP_ENV=production` and `APP_DEBUG=false`.
+Once published on GitHub Pages:
+1. Open your **LinkedIn profile**.
+2. Click **Add profile section** → **Recommended** → **Add featured**.
+3. Click the **+** button → **Add a link**.
+4. Paste your GitHub Pages portfolio link (e.g., `https://dinidu2002.github.io/portfolio/`).
+5. Title: `Dinidu Dissanayake — Software Developer Portfolio`
+6. Description: `Modern developer portfolio showcasing full-stack projects (Foodhub, TaskFlow Pro, AgriConnect), technical stack (PHP, React, Node.js, MySQL), and verified CV.`
+7. Click **Save**.
 
 ---
 
-## 👤 Author
+## 📧 Contact Form Functionality & Backendless Options
 
-**Dinidu Dissanayake**
-- 📍 Bakamoona, Sri Lanka
-- 📧 [dissanayakedinidu@gmail.com](mailto:dissanayakedinidu@gmail.com)
-- 📞 078 903 0455
-- 💻 GitHub: [@dinidu2002](https://github.com/dinidu2002)
+In this static edition:
+- When a user submits the form, JavaScript validates the inputs and opens their default email program with a pre-filled message directly to `dissanayakedinidu@gmail.com`.
+- It also displays an instant on-screen success confirmation and a **"Copy Message Text"** button so visitors can easily copy their text if using browser-based webmail (like Gmail or Outlook in a tab).
+
+### Optional: Free Direct Email Inbox Delivery (Formspree / Web3Forms)
+If you want messages submitted through the form to arrive directly in your Gmail inbox without opening the visitor's mail client:
+1. Register for free at [formspree.io](https://formspree.io) or [web3forms.com](https://web3forms.com).
+2. Replace the `<form id="contact-form">` tag in `index.html` with:
+   ```html
+   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   ```
+   No backend server or PHP required!
